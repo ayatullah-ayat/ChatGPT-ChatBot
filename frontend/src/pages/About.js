@@ -1,8 +1,8 @@
 
 const About = () => {
     return (
-        <div>
-            <h4>Home Page</h4>
+        <div className="container">
+            <h4>About Page</h4>
         </div>
     )
 }
