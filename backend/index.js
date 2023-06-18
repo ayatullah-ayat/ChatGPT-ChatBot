@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const User = require('./models/user');
 const app = express();
@@ -25,7 +26,19 @@ app.get('/users', async (req, res) => {
 app.post('/users', async (req, res) => {
     const { username, name, password, phone_number } = req.body;
 
-    
+    const saltRounds = 10;
+    const passwordHash = await bcrypt.hash(password, saltRounds);
+
+    const user = new User({
+        username,
+        name,
+        password: passwordHash,
+        phone_number
+    })
+
+    const savedUser = await user.save();
+
+    res.status(201).json(savedUser);
 })
 
 
