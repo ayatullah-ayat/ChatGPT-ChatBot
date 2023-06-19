@@ -13,6 +13,8 @@ mongoose.connect(url)
         .then(() => console.log('MONGODB_connected'))
         .catch(err => console.log('Connection failed', err.message));
 
+app.use(express.json())
+
 app.get('/', (req, res) => {
     res.end('hello from express');
 })
@@ -24,7 +26,9 @@ app.get('/users', async (req, res) => {
 })
 
 app.post('/users', async (req, res) => {
+    console.log('users_post_request_body', req.body);
     const { username, name, password, phone_number } = req.body;
+
 
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
