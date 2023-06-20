@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Input from "../components/Input";
+import Button from "../components/Button";
 
 const Login = () => {
 
@@ -34,7 +35,7 @@ const Login = () => {
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+                    <Button btnName="Login"/>
                 </form>
             </div>
         </div>
