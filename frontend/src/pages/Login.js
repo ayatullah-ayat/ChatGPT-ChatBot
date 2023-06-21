@@ -9,7 +9,7 @@ const Login = () => {
     const [password, setPassword] = useState(null);
 
     const submitLogin = (e) => {
-        console.log('submitLogin_clicked');
+        
     }
 
     return (
@@ -30,7 +30,7 @@ const Login = () => {
                     <div className="row mb-4">
                         <div className="col d-flex justify-content-center">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" checked />
+                                <input className="form-check-input" type="checkbox" value="" defaultChecked />
                                 <Label className="form-check-label" name="Remember Me"/>
                             </div>
                         </div>
