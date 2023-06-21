@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
 const User = require('./models/user');
@@ -23,6 +24,35 @@ app.get('/users', async (req, res) => {
     const users = await User.find({});
 
     res.json(users)
+})
+
+app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
+
+    const user = User.findOne({ email });
+    const passwordCheck = user === null ?
+                        false 
+                        : await bcrypt.compare(password, user.password)
+
+    if(!(user && passwordCheck)){
+        return res.status(401).json({
+            error: 'invalid email or password'
+        })
+    }
+
+    const userToken = {
+        email: email,
+        id: user._id
+    }
+
+    const token = jwt.sign(userToken, 'SECRET_KEY', { expiresIn: 60 * 60 });
+
+    res.status(200)
+        .send({
+            token,
+            email: user.email,
+            name: user.name
+        })
 })
 
 app.post('/users', async (req, res) => {
