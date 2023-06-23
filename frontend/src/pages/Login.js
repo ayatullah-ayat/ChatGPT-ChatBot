@@ -2,14 +2,18 @@ import { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Label from "../components/Label";
+import axios from "axios";
 
 const Login = () => {
 
-    const [email, setEmail] = useState(null);
+    const [username, setUserName] = useState(null);
     const [password, setPassword] = useState(null);
 
-    const submitLogin = (e) => {
-        
+    const submitLogin = async (e) => {
+        await axios.post('http://localhost:3001/login', { username, password })
+                    .then(res => {
+                        console.log('ress', res);
+                    })
     }
 
     return (
@@ -18,8 +22,8 @@ const Login = () => {
             <div className="w-25 m-auto">
                 <form>
                     <div className="form-outline mb-4">
-                        <Input type="email" inputChangeHandler={ (e) => setEmail(e.target.value) }/>
-                        <Label className="form-label" name="Email Address"/>
+                        <Input type="text" inputChangeHandler={ (e) => setUserName(e.target.value) }/>
+                        <Label className="form-label" name="User Name"/>
                     </div>
 
                     <div className="form-outline mb-4">

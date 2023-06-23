@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const mongoose = require('mongoose');
@@ -15,6 +16,7 @@ mongoose.connect(url)
         .catch(err => console.log('Connection failed', err.message));
 
 app.use(express.json())
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.end('hello from express');
@@ -27,9 +29,10 @@ app.get('/users', async (req, res) => {
 })
 
 app.post('/login', async (req, res) => {
-    const { email, password } = req.body;
+    const { username, password } = req.body;
 
-    const user = User.findOne({ email });
+    const user = await User.findOne({ username });
+
     const passwordCheck = user === null ?
                         false 
                         : await bcrypt.compare(password, user.password)
@@ -41,16 +44,16 @@ app.post('/login', async (req, res) => {
     }
 
     const userToken = {
-        email: email,
+        username: username,
         id: user._id
     }
 
     const token = jwt.sign(userToken, 'SECRET_KEY', { expiresIn: 60 * 60 });
 
-    res.status(200)
+    res.status(201)
         .send({
             token,
-            email: user.email,
+            username: user.username,
             name: user.name
         })
 })
