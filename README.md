@@ -88,35 +88,9 @@
    flyctl deploy
    ```
 
-## Use with docker
 
-```sh
-# pull image
-docker pull holegots/wechat-chatgpt
-# run container
-docker run -d --name wechat-chatgpt \
-    -e OPENAI_API_KEY=<YOUR OPENAI API KEY> \
-    -e MODEL="gpt-3.5-turbo" \
-    -e CHAT_PRIVATE_TRIGGER_KEYWORD="" \
-    -v $(pwd)/data:/app/data/wechat-assistant.memory-card.json \
-    holegots/wechat-chatgpt:latest
-# View the QR code to log in to wechat
-docker logs -f wechat-chatgpt
-```
 > How to get OPENAI API KEY? [Click here](https://platform.openai.com/account/api-keys)
 
-## Use with docker compose
-
-```sh
-# Copy the configuration file according to the template
-cp .env.example .env
-# Edit the configuration file
-vim .env
-# Start the container
-docker-compose up -d
-# View the QR code to log in to wechat
-docker logs -f wechat-chatgpt
-```
 
 ## Use with nodejs
 
