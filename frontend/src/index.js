@@ -1,10 +1,10 @@
-import React, { createContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AuthContext } from './context';
-
+import { AuthUpdateContext } from './context';
 
 import 'bootstrap/dist/css/bootstrap.css';
 
@@ -20,21 +20,30 @@ const UserProvider = ({ children }) => {
         }
     }, []);
 
+
+    const setAuthUser = (user) => {
+        setUser(user)
+    }
+
     return (
         <AuthContext.Provider value={ user }>
+            <AuthUpdateContext.Provider value={ setAuthUser }>
                 { children }
+            </AuthUpdateContext.Provider>
         </AuthContext.Provider>
     );
 }
 
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <UserProvider>
         <Router>
-            <App />
+            <UserProvider>
+                <App />
+            </UserProvider>
         </Router>
-    </UserProvider>
   </React.StrictMode>
 );
 

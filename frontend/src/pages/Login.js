@@ -1,18 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import loginService from "../services/authentication";
 import { useNavigate } from "react-router-dom";
+import { AuthUpdateContext } from "../context";
 
 
 const Login = () => {
 
     const [username, setUserName] = useState('');
     const [password, setPassword] = useState('');
-    const [user, setUser] = useState(null);
-    
     const navigation = useNavigate();
+
+    const setAuthUser = useContext(AuthUpdateContext);
 
     const submitLogin = async (e) => {
 
@@ -23,7 +24,7 @@ const Login = () => {
             if(user){
                 window.localStorage.setItem("loggedUser", JSON.stringify(user));
 
-                setUser(user);
+                setAuthUser(user);
                 setUserName('');
                 setPassword('');
                 navigation('/')
