@@ -2,7 +2,8 @@ import { useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Label from "../components/Label";
-import axios from "axios";
+import loginService from "../services/authentication";
+
 
 const Login = () => {
 
@@ -10,10 +11,8 @@ const Login = () => {
     const [password, setPassword] = useState(null);
 
     const submitLogin = async (e) => {
-        await axios.post('http://localhost:3001/login', { username, password })
-                    .then(res => {
-                        console.log('ress', res);
-                    })
+        const user = await loginService.login({ username, password });
+        console.log('userr', user);
     }
 
     return (
