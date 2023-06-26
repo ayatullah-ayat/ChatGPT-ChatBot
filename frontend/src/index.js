@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { AuthContext } from './context';
+
 
 import 'bootstrap/dist/css/bootstrap.css';
 
 
+const UserProvider = ({ children }) => {
+    const [user, setUser] = useState(null);
+
+    
+    useEffect(() => {
+        const loggedUser = window.localStorage.getItem('loggedUser');;
+        if(loggedUser){
+            setUser(loggedUser)
+        }
+    }, []);
+
+    return (
+        <AuthContext.Provider value={ user }>
+                { children }
+        </AuthContext.Provider>
+    );
+}
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Router>
-        <App />
-    </Router>
+    <UserProvider>
+        <Router>
+            <App />
+        </Router>
+    </UserProvider>
   </React.StrictMode>
 );
 
