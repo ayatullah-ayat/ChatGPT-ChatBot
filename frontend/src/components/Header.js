@@ -1,9 +1,13 @@
 
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 const Header = () => {
 
-
+    useEffect(() => {
+        const loggedUser = window.localStorage.getItem('loggedUser');
+        console.log('loggedUser', loggedUser);
+    }, [])
     return (
         <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <div className="container">

@@ -3,16 +3,35 @@ import Input from "../components/Input";
 import Button from "../components/Button";
 import Label from "../components/Label";
 import loginService from "../services/authentication";
+import { useNavigate } from "react-router-dom";
 
 
 const Login = () => {
 
-    const [username, setUserName] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [username, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const [user, setUser] = useState(null);
+    
+    const navigation = useNavigate();
 
     const submitLogin = async (e) => {
-        const user = await loginService.login({ username, password });
-        console.log('userr', user);
+
+
+        try {
+            const user = await loginService.login({ username, password });
+            
+            if(user){
+                window.localStorage.setItem("loggedUser", JSON.stringify(user));
+
+                setUser(user);
+                setUserName('');
+                setPassword('');
+                navigation('/')
+            }
+        }
+        catch(exception) {
+            console.log('HandleLogin_Exception', exception);
+        }
     }
 
     return (
