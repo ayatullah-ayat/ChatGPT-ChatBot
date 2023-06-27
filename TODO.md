@@ -12,9 +12,9 @@ Project Description
 
 ### In Progress
 
-- [ ] Logout internally  
 
 ### Done ✓
 
 - [x] Not show login page after logged In  
+- [x] Logout internally  
 
