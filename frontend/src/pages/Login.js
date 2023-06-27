@@ -1,15 +1,38 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Input from "../components/Input";
 import Button from "../components/Button";
 import Label from "../components/Label";
+import loginService from "../services/authentication";
+import { useNavigate } from "react-router-dom";
+import { AuthUpdateContext } from "../context";
+
 
 const Login = () => {
 
-    const [email, setEmail] = useState(null);
-    const [password, setPassword] = useState(null);
+    const [username, setUserName] = useState('');
+    const [password, setPassword] = useState('');
+    const navigation = useNavigate();
 
-    const submitLogin = (e) => {
-        
+    const setAuthUser = useContext(AuthUpdateContext);
+
+    const submitLogin = async (e) => {
+
+
+        try {
+            const user = await loginService.login({ username, password });
+            
+            if(user){
+                window.localStorage.setItem("loggedUser", JSON.stringify(user));
+
+                setAuthUser(user);
+                setUserName('');
+                setPassword('');
+                navigation('/')
+            }
+        }
+        catch(exception) {
+            console.log('HandleLogin_Exception', exception);
+        }
     }
 
     return (
@@ -18,8 +41,8 @@ const Login = () => {
             <div className="w-25 m-auto">
                 <form>
                     <div className="form-outline mb-4">
-                        <Input type="email" inputChangeHandler={ (e) => setEmail(e.target.value) }/>
-                        <Label className="form-label" name="Email Address"/>
+                        <Input type="text" inputChangeHandler={ (e) => setUserName(e.target.value) }/>
+                        <Label className="form-label" name="User Name"/>
                     </div>
 
                     <div className="form-outline mb-4">
