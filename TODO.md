@@ -8,10 +8,10 @@ Project Description
 
 - [ ] Chatbot implement with ChatGPT  
 - [ ] ChatBot page design  
-- [ ] Register User  
 
 ### In Progress
 
+- [ ] Register User  
 
 ### Done ✓
 

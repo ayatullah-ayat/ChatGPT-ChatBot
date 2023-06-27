@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import { AuthContext } from "./context";
 import { useContext } from "react";
+import Register from "./pages/Register";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
                 <Route path="/chatbot" element={<ChatBot />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={ !user ? <Login /> : <Navigate replace to={'/'} />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
         </div>
     );

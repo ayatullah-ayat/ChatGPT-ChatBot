@@ -29,9 +29,9 @@ app.get('/users', async (req, res) => {
 })
 
 app.post('/login', async (req, res) => {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     const passwordCheck = user === null ?
                         false 
@@ -44,7 +44,7 @@ app.post('/login', async (req, res) => {
     }
 
     const userToken = {
-        username: username,
+        email: email,
         id: user._id
     }
 
@@ -53,21 +53,21 @@ app.post('/login', async (req, res) => {
     res.status(201)
         .send({
             token,
-            username: user.username,
+            email: user.email,
             name: user.name
         })
 })
 
 app.post('/users', async (req, res) => {
     console.log('users_post_request_body', req.body);
-    const { username, name, password, phone_number } = req.body;
+    const { email, name, password, phone_number } = req.body;
 
 
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
 
     const user = new User({
-        username,
+        email,
         name,
         password: passwordHash,
         phone_number
