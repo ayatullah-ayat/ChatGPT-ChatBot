@@ -3,6 +3,8 @@ import Button from "../components/Button";
 import Input from "../components/Input";
 import Label from "../components/Label";
 
+import authServices from "../services/authentication";
+
 const Register = () => {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
@@ -23,7 +25,15 @@ const Register = () => {
             setPasswordError('Password is Required');
         }
 
-        
+        const body = {
+            email,
+            name,
+            phone_number: phone,
+            password
+        }
+        const savedUser = authServices.createUser(body);
+
+        console.log('registerHandler_savedUser', savedUser);
 
     }
     return (

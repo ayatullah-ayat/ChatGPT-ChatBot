@@ -62,6 +62,7 @@ app.post('/users', async (req, res) => {
     console.log('users_post_request_body', req.body);
     const { email, name, password, phone_number } = req.body;
 
+    res.json(req.body)
 
     const saltRounds = 10;
     const passwordHash = await bcrypt.hash(password, saltRounds);
