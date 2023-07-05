@@ -6,15 +6,16 @@ Project Description
 
 ### Todo
 
+- [ ] Chatbot with Backend server  
 - [ ] Chatbot implement with ChatGPT  
-- [ ] ChatBot page design  
 
 ### In Progress
 
-- [ ] Register User  
+- [ ] ChatBot page design  
 
 ### Done ✓
 
 - [x] Not show login page after logged In  
 - [x] Logout internally  
+- [x] Register User  
 

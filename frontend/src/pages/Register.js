@@ -15,7 +15,6 @@ const Register = () => {
     const [passwordError, setPasswordError] = useState(null);
 
     const registerHandler = async () => {
-        console.log('Register_states', email, name, phone, password);
         if(!email){
             setEmailError('Email is Required');
         }if(email && !email.includes('@')){
