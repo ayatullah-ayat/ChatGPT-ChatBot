@@ -6,11 +6,13 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import { AuthContext } from "./context";
 import { useContext } from "react";
+import Register from "./pages/Register";
 
 
 function App() {
 
     const user = useContext(AuthContext);
+    console.log('App_user', user);
     return (
         <div>
             <Header />
@@ -18,7 +20,8 @@ function App() {
                 <Route path="/" element={<Home />} />
                 <Route path="/chatbot" element={<ChatBot />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/login" element={ user ? <Login /> : <Navigate replace to={'/'} />} />
+                <Route path="/login" element={ !user ? <Login /> : <Navigate replace to={'/'} />} />
+                <Route path="/register" element={<Register />} />
             </Routes>
         </div>
     );

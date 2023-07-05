@@ -9,7 +9,7 @@ import { AuthUpdateContext } from "../context";
 
 const Login = () => {
 
-    const [username, setUserName] = useState('');
+    const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigate();
 
@@ -19,13 +19,13 @@ const Login = () => {
 
 
         try {
-            const user = await loginService.login({ username, password });
+            const user = await loginService.login({ email, password });
             
             if(user){
                 window.localStorage.setItem("loggedUser", JSON.stringify(user));
 
                 setAuthUser(user);
-                setUserName('');
+                setEmail('');
                 setPassword('');
                 navigation('/')
             }
@@ -41,20 +41,20 @@ const Login = () => {
             <div className="w-25 m-auto">
                 <form>
                     <div className="form-outline mb-4">
-                        <Input type="text" inputChangeHandler={ (e) => setUserName(e.target.value) }/>
-                        <Label className="form-label" name="User Name"/>
+                        <Label className="form-label" name="Email"/>
+                        <Input type="email" inputChangeHandler={ (e) => setEmail(e.target.value) }/>
                     </div>
 
                     <div className="form-outline mb-4">
-                        <Input type="password" inputChangeHandler={ (e) => setPassword(e.target.value) }/>
                         <Label className="form-label" name="Password"/>
+                        <Input type="password" inputChangeHandler={ (e) => setPassword(e.target.value) }/>
                     </div>
 
                     <div className="row mb-4">
                         <div className="col d-flex justify-content-center">
                             <div className="form-check">
-                                <input className="form-check-input" type="checkbox" value="" defaultChecked />
                                 <Label className="form-check-label" name="Remember Me"/>
+                                <input className="form-check-input" type="checkbox" value="" defaultChecked />
                             </div>
                         </div>
 
