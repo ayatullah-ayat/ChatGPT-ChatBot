@@ -7,7 +7,10 @@ Project Description
 ### Todo
 
 - [ ] Chatbot with Backend server  
-- [ ] Chatbot implement with ChatGPT  
+- [ ] Chatbot implement with ChatGPT
+- [ ] Re Design the Chatbot
+- [ ] Forgot password
+- [ ] Login with Social accounts
 
 ### In Progress
 
