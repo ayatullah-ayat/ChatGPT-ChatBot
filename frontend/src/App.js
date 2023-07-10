@@ -7,6 +7,7 @@ import Login from "./pages/Login";
 import { AuthContext } from "./context";
 import { useContext } from "react";
 import Register from "./pages/Register";
+import NotFound from "./pages/404";
 
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/about" element={<About />} />
                 <Route path="/login" element={ !user ? <Login /> : <Navigate replace to={'/'} />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/*" element={<NotFound />} />
             </Routes>
         </div>
     );
