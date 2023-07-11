@@ -6,11 +6,14 @@ Project Description
 
 ### Todo
 
+- [ ] Tailwind css  
+- [ ] Graphql implement  
+- [ ] Otp mobile phone  
 - [ ] Chatbot with Backend server  
-- [ ] Chatbot implement with ChatGPT
-- [ ] Re Design the Chatbot
-- [ ] Forgot password
-- [ ] Login with Social accounts
+- [ ] Chatbot implement with ChatGPT  
+- [ ] Re Design the Chatbot  
+- [ ] Forgot password  
+- [ ] Login with Social accounts  
 
 ### In Progress
 
