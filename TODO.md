@@ -6,8 +6,15 @@ Project Description
 
 ### Todo
 
+- [ ] Can't visit chatgpt page without login  
+- [ ] Tailwind css  
+- [ ] Graphql implement  
+- [ ] Otp mobile phone  
 - [ ] Chatbot with Backend server  
 - [ ] Chatbot implement with ChatGPT  
+- [ ] Re Design the Chatbot  
+- [ ] Forgot password  
+- [ ] Login with Social accounts  
 
 ### In Progress
 
