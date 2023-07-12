@@ -6,6 +6,7 @@ Project Description
 
 ### Todo
 
+- [ ] Can't visit chatgpt page without login  
 - [ ] Tailwind css  
 - [ ] Graphql implement  
 - [ ] Otp mobile phone  
