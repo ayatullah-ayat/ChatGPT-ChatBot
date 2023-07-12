@@ -31,7 +31,7 @@ const Login = () => {
             }
         }
         catch(exception) {
-            console.log('HandleLogin_Exception', exception);
+            alert(exception.response.data.error)
         }
     }
 
