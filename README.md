@@ -1,12 +1,12 @@
 ## Chatbot Powered By ChatGPT
 
-<h1 align="center">Welcome to wechat-chatgpt 👋</h1>
+<h1 align="center">Welcome to Chatgpt-Chatbot 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="#" target="_blank">
     <img alt="License: ISC" src="https://img.shields.io/badge/License-ISC-yellow.svg" />
   </a>
-  <a href="https://twitter.com/fuergaosi" target="_blank">
+  <a href="https://twitter.com/ayatullah-ayat" target="_blank">
     <img alt="Twitter: fuergaosi" src="https://img.shields.io/twitter/follow/fuergaosi.svg?style=social" />
   </a>
   </a>
@@ -15,8 +15,6 @@
   </a>
 </p>
 
-> Use ChatGPT On Wechat via wechaty  
-> English | [中文文档](README_ZH.md)
 
 [![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/dMLG70?referralCode=bIYugQ)
 
@@ -38,54 +36,9 @@
    - Support setting prompt
    - Support proxy (in development)
 
-## 🚀 Usage
-- [Use with Railway](#use-with-railway)(PaaS, Free, Stable, ✅Recommended)
-- [Use with Fly.io](#use-with-flyio)(Paas, Free, ✅Recommended)
-- [Use with docker](#use-with-docker)(Self-hosted, Stable, ✅Recommended)
-- [Use with docker compose](#use-with-docker-compose)(Self-hosted, Stable, ✅Recommended)
-- [Use with nodejs](#use-with-nodejs)(Self-hosted)
-
-## Use with Railway
-> Railway offers $5 or 500 hours of runtime per month
-1. Click the [Railway](https://railway.app/template/dMLG70?referralCode=bIYugQ) button to go to the Railway deployment page
-2. Click the `Deploy Now` button to enter the Railway deployment page
-3. Fill in the repository name and `OPENAI_API_KEY` (need to link GitHub account)
-4. Click the `Deploy` button
-5. Click the `View Logs` button and wait for the deployment to complete
-
-## Use with Fly.io
-> Please allocate 512MB memory for the application to meet the application requirements
-
-> fly.io offers free bills up to $5(Free Allowances 3 256MB are not included in the bill)
-1. Install [flyctl](https://fly.io/docs/getting-started/installing-flyctl/)
+1. Clone the project and enter the project directory
    ```shell
-    # macOS
-    brew install flyctl
-    # Windows
-    scoop install flyctl
-    # Linux
-    curl https://fly.io/install.sh | sh
-   ```
-2. Clone the project and enter the project directory
-   ```shell
-   git clone https://github.com/fuergaosi233/wechat-chatgpt.git && cd wechat-chatgpt
-   ```
-3. Create a new app
-   ```shell
-   ➜ flyctl launch 
-    ? Would you like to copy its configuration to the new app? No
-    ? App Name (leave blank to use an auto-generated name): <YOUR APP NAME>
-    ? Select region: <YOUR CHOOSE REGION>
-    ? Would you like to setup a Postgresql database now? No
-    ? Would you like to deploy now? No
-   ```
-4. Configure the environment variables
-   ```shell
-   flyctl secrets set OPENAI_API_KEY="<YOUR OPENAI API KEY>" MODEL="<CHATGPT-MODEL>"
-   ```
-5. Deploy the app
-   ```shell
-   flyctl deploy
+   git clone https://github.com/ayatullah-ayat/ChatGPT-ChatBot && cd ChatGPT-ChatBot
    ```
 
 
@@ -98,14 +51,17 @@
 
 ```sh
 # Clone the project
-git clone https://github.com/fuergaosi233/wechat-chatgpt.git && cd wechat-chatgpt
+git clone https://github.com/ayatullah-ayat/ChatGPT-ChatBot && cd ChatGPT-ChatBot
 # Install dependencies
 npm install
 # Copy the configuration file according to the template
 cp .env.example .env
 # Edit the configuration file
 vim .env
-# Start project
+# Start the Frontend
+npm run start
+
+# Start the Backend
 npm run dev
 ```
 
@@ -125,43 +81,4 @@ npm run dev
 | BLOCK_WORDS                  | Chat blocker words, (works for both private and group chats, Use, Split)                                                                                                             |
 | CHATGPT_BLOCK_WORDS          | The blocked words returned by ChatGPT(works for both private and group chats, Use, Split)                                                                                            |
 
-## 📝 Using Custom ChatGPT API
 
-> https://github.com/fuergaosi233/openai-proxy
-
-```shell
-# Clone the project
-git clone https://github.com/fuergaosi233/openai-proxy
-# Install dependencies
-npm install && npm install -g wrangler && npm run build
-# Deploy to CloudFlare Workers
-npm run deploy
-# Custom domain (optional)
-Add `Route` to `wrangler.toml`
-routes = [
-    { pattern = "Your Custom Domain", custom_domain = true },
-]
-```
-
-## ⌨️ Commands
-> Enter in the WeChat chat box
-```shell
-/cmd help # Show help
-/cmd prompt <PROMPT> # Set prompt
-/cmd clear # Clear all sessions since last boot
-```
-
-## ✨ Contributor
-
-<a href="https://github.com/fuergaosi233/wechat-chatgpt/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=fuergaosi233/wechat-chatgpt" />
-</a>
-
-## 🤝 Contributing
-
-Contributions, issues and feature requests are welcome!<br />Feel free to
-check [issues page](https://github.com/fuergaosi233/wechat-chatgpt/issues).
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
